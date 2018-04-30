@@ -7,14 +7,22 @@ program main
     use matrix_test, only : tridiagonal_solve_test
     implicit none
     real (kind=_KIND), allocatable :: A(:,:), X(:)
-    real (kind=_KIND) :: h,nn
+    real (kind=_KIND) :: h,nn,error_sum
     integer (kind=4) :: N,i
+    character(len=20) :: argv
+
+    ! Read command line input
+    call get_command_argument(1,argv)
+    if (command_argument_count() < 1) then
+        N = 10
+    else 
+        read(argv,*) N
+    end if
 
     ! Tests
     call tridiagonal_solve_test ()
 
     ! Main body
-    N = 100
     nn = 1.0 * N * N
     h = 1.0/N
 
@@ -27,12 +35,16 @@ program main
     A(1,1) = 0
 
     X = 0
-    X(N) = 1 * nn 
+    X(N) = - N*(N + 1) 
 
     call tridiagonal_solve (A,X,N)
 
+    error_sum = 0
     do i = 0,N
-        write(*,*) i * h, X(i) + i * h
+        write(*,*) i * h, X(i)
+        error_sum = error_sum + abs(X(i) - i*h)
     end do
+
+    write(*,*) "Average error = ", error_sum / N
 
 end program main
