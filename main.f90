@@ -31,12 +31,8 @@ program main
 
     call tridiagonal_solve (A,X,N)
 
-    ! Write results to file and standard output
-!    open(unit = 10, file = "result.txt")
     do i = 0,N
         write(*,*) i * h, X(i) + i * h
-        !write(10,*) i * h, X(i) + i * h
     end do
-!    close(10)
 
 end program main
