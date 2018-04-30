@@ -7,8 +7,8 @@ FCFLAGS = -std=f2008 -fimplicit-none -cpp -Wall
 # link flags
 FFLAGS = 
 
-# source files
-SRCS = matrix
+# object files 
+OBJ = matrix.o main.o
 
 # program name
 PROGRAM = fdm
@@ -17,8 +17,11 @@ PROGRAM = fdm
 
 all: $(PROGRAM) 
 
-$(PROGRAM):
-	$(FC) -o $@ $(SRCS).f90 $(FFLAGS) 
+$(PROGRAM): $(OBJ)
+	$(FC) -o $@ $^ $(FFLAGS)
+
+%.o: %.f90
+	$(FC) $< $(FCFLAGS)
 
 clean:
 	rm -f $(PROGRAM)
