@@ -27,9 +27,9 @@ subroutine tridiagonal_solve (A,X,N)
     A(1,3) = A(1,3) / A(1,2)
 
     do i = 2,N
-        multi = 1.0 / (A(i,2) - A(i,1) * A(i-1,3))
-        A(i,3) = A(i,3) * multi
-        X(i) = (X(i) - A(i,1) * X(i-1)) * multi
+        multi = A(i,2) - A(i,1) * A(i-1,3)
+        A(i,3) = A(i,3) / multi
+        X(i) = (X(i) - A(i,1) * X(i-1)) / multi
     end do
 
     ! Obtaining result using back substitution
