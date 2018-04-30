@@ -8,7 +8,7 @@ FCFLAGS = -std=f2008 -fimplicit-none -cpp -Wall
 FFLAGS = 
 
 # object files 
-OBJ = matrix.o main.o
+OBJ = matrix.o matrix_test.o main.o 
 
 # program name
 PROGRAM = fdm
