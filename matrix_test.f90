@@ -10,7 +10,7 @@ contains
 subroutine tridiagonal_solve_test ()
     use matrix
 
-    real (kind=8) :: A(5,3), X(5), D(5)
+    real (kind=8) :: A(5,3), X(5)
 
     ! Test 1
     A(:,1) = 1
@@ -18,9 +18,8 @@ subroutine tridiagonal_solve_test ()
     A(:,3) = 1
     A(1,1) = 0
     A(5,3) = 0
-    X = 0
-    D = (/1,2,3,4,5/)
-    call tridiagonal_solve(A,X,D,5)
+    X = (/1,2,3,4,5/)
+    call tridiagonal_solve(A,X,5)
     if (any(X - (/0.5,0.0,1.5,0.0,2.5/) .GT. eps)) then
         write(*,*) "(tridiagonal_solve) test1 failed"
     endif
@@ -31,9 +30,8 @@ subroutine tridiagonal_solve_test ()
     A(:,3) = 2
     A(1,1) = 0
     A(5,3) = 0
-    X = 0
-    D = (/1,1,1,1,1/)
-    call tridiagonal_solve(A,X,D,5)
+    X = (/1,1,1,1,1/)
+    call tridiagonal_solve(A,X,5)
     if (any(X - (/(1.0/3),0.0,(1.0/3),0.0,(1.0/3)/) .GT. eps)) then
         write(*,*) "(tridiagonal_solve) test2 failed"
     endif
