@@ -33,10 +33,10 @@ $(PROGRAM): $(OBJ)
 
 test:
 	touch $(OUT)
-	for number in 10 100 200 ; do \
+	for number in 10 100 1000 ; do \
 	    echo "N = $$number, K = $(K)" >> $(OUT) ; \
 	    ./$(PROGRAM) $$number >> $(OUT) ; \
 	done
 
 clean:
-	rm -f $(PROGRAM) *.mod *.o result.txt
+	rm -f $(PROGRAM) *.mod *.o
