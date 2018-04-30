@@ -16,17 +16,12 @@ subroutine tridiagonal_solve (A,X,D)
     real (kind=8) :: multi
     integer (kind=8) :: i,n,j
 
+    ! Finding normalized bidiagonal matrix
     n = size(D)
     D(1) = D(1) / A(1,2)
     A(1,:) = A(1,:) / A(1,2)
 
     do i = 2,n
-        ! debug
-        write(*,*)
-        do j = 1,n
-            write(*,*) A(j,:), D(j)
-        end do
-        ! end debug
         multi = A(i-1,2) / A(i,1) 
         A(i,1) = 0
         A(i,2) = A(i,2) * multi - A(i-1,3) 
@@ -34,14 +29,6 @@ subroutine tridiagonal_solve (A,X,D)
         D(i) = D(i) / A(i,2)
         A(i,:) = A(i,:) / A(i,2)
     end do
-
-    ! debug
-    write(*,*)
-    do j = 1,n
-        write(*,*) A(j,:), D(j)
-    end do
-    ! end debug
-
 
     ! Obtaining result usig back substitution
     X(n) = D(n)
