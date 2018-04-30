@@ -1,13 +1,13 @@
-#if !defined(PREC)
-#define PREC 4
+#if !defined(_KIND)
+#define _KIND 4
 #endif
 
 program main
-    use matrix !, only : tridiagonal_solve
+    use matrix , only : tridiagonal_solve
     use matrix_test, only : tridiagonal_solve_test
     implicit none
-    real (kind=8), allocatable :: A(:,:), X(:)
-    real (kind=8) :: h,nn
+    real (kind=_KIND), allocatable :: A(:,:), X(:)
+    real (kind=_KIND) :: h,nn
     integer (kind=4) :: N,i
 
     ! Tests
@@ -31,12 +31,12 @@ program main
 
     call tridiagonal_solve (A,X,N)
 
-    ! Write results to file
-    open(unit = 10, file = "result.txt")
+    ! Write results to file and standard output
+!    open(unit = 10, file = "result.txt")
     do i = 0,N
         write(*,*) i * h, X(i) + i * h
-        write(10,*) i * h, X(i) + i * h
+        !write(10,*) i * h, X(i) + i * h
     end do
-    close(10)
+!    close(10)
 
 end program main

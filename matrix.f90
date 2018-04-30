@@ -1,3 +1,7 @@
+#if !defined(_KIND)
+#define _KIND 4
+#endif
+
 module matrix
     implicit none
 contains
@@ -16,10 +20,10 @@ contains
 subroutine tridiagonal_solve (A,X,N) 
     implicit none
 
-    real (kind=8), intent(inout) :: A(:,:), X(:)
+    real (kind=_KIND), intent(inout) :: A(:,:), X(:)
     integer (kind=4), intent(in) :: N
 
-    real (kind=8) :: multi
+    real (kind=_KIND) :: multi
     integer (kind=4) :: i
 
     ! Finding normalized bidiagonal matrix

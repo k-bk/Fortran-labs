@@ -1,6 +1,10 @@
+#if !defined(_KIND)
+#define _KIND 4
+#endif
+
 module matrix_test
     implicit none
-    real (kind=8) :: eps = 0.000001
+    real (kind=_KIND) :: eps = 0.000001
 
 contains
 
@@ -10,7 +14,7 @@ contains
 subroutine tridiagonal_solve_test ()
     use matrix
 
-    real (kind=8) :: A(5,3), X(5)
+    real (kind=_KIND) :: A(5,3), X(5)
 
     ! Test 1
     A(:,1) = 1
