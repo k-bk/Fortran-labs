@@ -2,6 +2,6 @@ program main
     use matrix
     implicit none
     write(*,*) "Hello world"
-    call helloMatrix ()
+    call hello_matrix ()
 end program main
 

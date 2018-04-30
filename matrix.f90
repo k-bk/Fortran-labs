@@ -34,14 +34,14 @@ subroutine tridiagonal_solve (A,X,D,n)
     do i = n-1,0,-1
         X(i) = D(i) - A(i,3) * X(i+1)
     end do
-end subroutine
+end subroutine tridiagonal_solve
 
 ! ---- hello_matrix --------------------------------
 ! Function used to test module linking.
 !
 subroutine hello_matrix ()
     write(*,*) "Welcome to the matrix"
-end subroutine
+end subroutine hello_matrix
 
 end module matrix
 
