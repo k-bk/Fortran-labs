@@ -17,8 +17,10 @@ subroutine tridiagonal_solve (A,X,N)
     implicit none
 
     real (kind=8), intent(inout) :: A(:,:), X(:)
+    integer (kind=4), intent(in) :: N
+
     real (kind=8) :: multi
-    integer (kind=4) :: i,N
+    integer (kind=4) :: i
 
     ! Finding normalized bidiagonal matrix
     X(1) = X(1) / A(1,2)

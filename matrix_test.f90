@@ -1,6 +1,6 @@
 module matrix_test
     implicit none
-    real (kind=8) :: eps = 0.001
+    real (kind=8) :: eps = 0.000001
 
 contains
 
