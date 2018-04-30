@@ -28,7 +28,7 @@ all: $(PROGRAM)
 $(PROGRAM): $(OBJ)
 	$(FC) -o $@ $^ $(FFLAGS)
 
-%.o: %.f90
+%.o: src/%.f90
 	$(FC) -c $< $(FCFLAGS) -D_KIND=$(K)
 
 test:
