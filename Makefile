@@ -21,7 +21,7 @@ $(PROGRAM): $(OBJ)
 	$(FC) -o $@ $^ $(FFLAGS)
 
 %.o: %.f90
-	$(FC) $< $(FCFLAGS)
+	$(FC) -c $< $(FCFLAGS)
 
 clean:
-	rm -f $(PROGRAM)
+	rm -f $(PROGRAM) *.mod *.o
